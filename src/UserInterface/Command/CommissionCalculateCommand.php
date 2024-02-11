@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Command;
+namespace App\UserInterface\Command;
 
 use App\Application\CommissionCalculator\CommissionCalculatorInterface;
 use App\Application\CommissionCalculator\Transaction;
