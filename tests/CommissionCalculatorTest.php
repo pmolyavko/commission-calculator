@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use App\Application\CommissionCalculator\BinProviderInterface;
 use App\Application\CommissionCalculator\CommissionCalculator;
+use App\Application\CommissionCalculator\RateProviderInterface;
 use App\Application\CommissionCalculator\Transaction;
-use App\Infrastructure\BinProvider;
-use App\Infrastructure\RateProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class CommissionCalculatorTest extends KernelTestCase
@@ -18,12 +18,12 @@ class CommissionCalculatorTest extends KernelTestCase
         $mockTransaction->currency = 'EUR';
         $mockTransaction->amount = 100;
 
-        $mockBinProvider = $this->getMockBuilder(BinProvider::class)
+        $mockBinProvider = $this->getMockBuilder(BinProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockBinProvider->method('getCountryIsoCodeByBin')->willReturn('DE');
 
-        $mockRateProvider = $this->getMockBuilder(RateProvider::class)
+        $mockRateProvider = $this->getMockBuilder(RateProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockRateProvider->method('getRateByCurrency')->willReturn('0');
@@ -41,12 +41,12 @@ class CommissionCalculatorTest extends KernelTestCase
         $mockTransaction->currency = 'EUR';
         $mockTransaction->amount = 100;
 
-        $mockBinProvider = $this->getMockBuilder(BinProvider::class)
+        $mockBinProvider = $this->getMockBuilder(BinProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockBinProvider->method('getCountryIsoCodeByBin')->willReturn('US');
 
-        $mockRateProvider = $this->getMockBuilder(RateProvider::class)
+        $mockRateProvider = $this->getMockBuilder(RateProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockRateProvider->method('getRateByCurrency')->willReturn('0');
@@ -64,12 +64,12 @@ class CommissionCalculatorTest extends KernelTestCase
         $mockTransaction->currency = 'USD';
         $mockTransaction->amount = 50;
 
-        $mockBinProvider = $this->getMockBuilder(BinProvider::class)
+        $mockBinProvider = $this->getMockBuilder(BinProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockBinProvider->method('getCountryIsoCodeByBin')->willReturn('LT');
 
-        $mockRateProvider = $this->getMockBuilder(RateProvider::class)
+        $mockRateProvider = $this->getMockBuilder(RateProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockRateProvider->method('getRateByCurrency')->willReturn('0.93');
@@ -87,12 +87,12 @@ class CommissionCalculatorTest extends KernelTestCase
         $mockTransaction->currency = 'USD';
         $mockTransaction->amount = 50;
 
-        $mockBinProvider = $this->getMockBuilder(BinProvider::class)
+        $mockBinProvider = $this->getMockBuilder(BinProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockBinProvider->method('getCountryIsoCodeByBin')->willReturn('US');
 
-        $mockRateProvider = $this->getMockBuilder(RateProvider::class)
+        $mockRateProvider = $this->getMockBuilder(RateProviderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $mockRateProvider->method('getRateByCurrency')->willReturn('0.93');
